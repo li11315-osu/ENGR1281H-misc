@@ -1,4 +1,9 @@
-#include <stdio.h>
+// ENGR 1281H
+// APP B37-1 EXT
+// 19 November 2020
+// Thomas Li, Annie Getts, Drew Ripberger
+// Clingan 10:20
+
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
