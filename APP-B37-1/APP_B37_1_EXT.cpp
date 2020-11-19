@@ -344,8 +344,8 @@ void battle(player *hero, enemy *monster)
 character::character(char nm[25], int l)
 {
 	/* Set name and level as inputs */
-	_____
-	_____
+	strcpy(name, nm);
+	level = l;
 	/* Set health and strength based on level */
 	health = level*CHARACTER_HEALTH_TO_LEVEL_RATIO;
 	strength = level*CHARACTER_STRENGTH_TO_LEVEL_RATIO;
@@ -368,12 +368,12 @@ int player::punch()
 }
 
 /* Player sword attack function */
-_____
+int player::sword()
 {
 	/* Set weapon message text for sword */
-	_____
+	strcpy(weapon_message, "You swing your sword.");
 	/* Output randomized sword damage */
-	_____
+	return rand()%(strength*PLAYER_SWORD_TO_STRENGTH_RATIO);
 }
 
 /* Player heal function */
@@ -395,10 +395,10 @@ int player::heal()
 void player::display_stats()
 {
 	/* Display player name, level, health, and strength */
-	cout << "\nPlayer Name: " << _____;
-	cout << "\nPlayer Level: " << _____;
-	cout << "\nPlayer Health: " << _____;
-	cout << "\nPlayer Strength: " << _____;
+	cout << "\nPlayer Name: " << name;
+	cout << "\nPlayer Level: " << level;
+	cout << "\nPlayer Health: " << health;
+	cout << "\nPlayer Strength: " << strength;
 }
 
 /* Player function to update stats upon leveling up */
