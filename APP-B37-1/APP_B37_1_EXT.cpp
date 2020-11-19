@@ -422,32 +422,32 @@ int goblin::attack()
 }
 
 /* Spider attack function */
-_____
+int spider::attack()
 {
 	/* Set wound message text for spider attack */
-	_____
+	strcpy(wound_message, "The spider bites you.");
 	/* Output randomized spider attack damage */
-	_____
+	return rand()%(strength*SPIDER_ATTACK_TO_STRENGTH_RATIO);
 }
 
 /* Dragon attack function */
-_____
+int dragon::attack()
 {
 	/* Check if dragon has above half health */
 	if (health > get_max_health()/2)
 	{
 		/* Set wound message text for standard dragon attack */
-		_____
+		strcpy(wound_message, "The dragon attacks you with its claws.");
 		/* Output randomized standard dragon attack damage */
-		_____
+		return rand()%(strength*DRAGON_ATTACK_TO_STRENGTH_RATIO);
 	}
 	/* Else check if dragon has less than half health */
 	else if (health <= get_max_health()/2)
 	{
 		/* Set wound message text for special dragon attck */
-		_____
+		strcpy(wound_message, "The dragon breathes fire on you.");
 		/* Output randomized special dragon attack damage */
 		/* Note the blank below is the same as the blank above for the standard attack */
-		_____+DRAGON_ATTACK_SPECIAL;
+		return rand()%(strength*SPIDER_ATTACK_TO_STRENGTH_RATIO)+DRAGON_ATTACK_SPECIAL;
 	}
 }
