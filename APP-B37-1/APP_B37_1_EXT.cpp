@@ -70,11 +70,11 @@ class player : public character
 };
 
 /* Enemy child class of character parent class */
-_____
+class enemy : public character
 {
 	public:
 		/* Constructor function to set stats by using parent constructor */
-		_____
+		enemy(char nm[25], int l) : character(nm, l)
 		{
 			/* Initialize generic enemy wound message text */
 			strcpy(wound_message, "The enemy attacks.");		
@@ -86,31 +86,31 @@ _____
 };
 
 /* Goblin child class of enemy parent class */
-_____
+class goblin : public enemy
 {
 	public:
 		/* Constructor function to set stats by using parent constructor */
-		_____ {};
+		goblin(char nm[25], int l) : enemy(nm, l) {};
 		/* Attack function unique to goblin */
 		int attack();
 };
 
 /* Spider child class of enemy parent class */
-_____
+class spider : public enemy
 {
 	public:
 		/* Constructor function to set stats by using parent constructor */
-		_____ {};
+		spider(char nm[25], int l) : enemy(nm, l) {};
 		/* Attack function unique to spider */
 		int attack();
 };
 
 /* Dragon child class of enemy parent class */
-_____
+class dragon : public enemy
 {
 	public:
 		/* Constructor function to set stats by using parent constructor */
-		_____ {};
+		dragon(char nm[25], int l) : enemy(nm, l) {};
 		/* Attack function unique to dragon */
 		int attack();
 };
