@@ -192,7 +192,7 @@ int main()
     					/* Randomize goblin monster level within range */
     					monster_level = rand()%GOBLIN_LEVEL_RANGE+GOBLIN_LEVEL_MIN;
     					/* Create new instance of goblin class and assign monster to it */
-    					*monster = goblin(monster_name, monster_level);
+    					monster = new goblin(monster_name, monster_level);
     					break;
     				case 1:
 					/* Set spider monster name */
@@ -200,7 +200,7 @@ int main()
     					/* Randomize goblin monster level within range */
     					monster_level = rand()%GOBLIN_LEVEL_RANGE+GOBLIN_LEVEL_MIN;
     					/* Create new instance of goblin class and assign monster to it */
-    					*monster = goblin(monster_name, monster_level);
+    					monster = new goblin(monster_name, monster_level);
     					break;
     					
     			}
@@ -221,7 +221,7 @@ int main()
     			/* Set dragon boss monster level */
     			monster_level = DRAGON_LEVEL;
     			/* Create new instance of dragon class and assign boss to it */
-    			*boss = dragon(monster_name, monster_level);
+    			boss = new dragon(monster_name, monster_level);
     			
     			/* Enter battle function with hero and boss */
     			battle(&hero, boss);
@@ -252,11 +252,11 @@ int main()
 void battle(player *hero, enemy *monster)
 {
 	/*Declare and initialize control variables and health-related variables */
-    int choice = 0, battle = 1;
+    int choice = 1, battle = 1;
     int damage = 0, recovery = 0;
     
     /* Clear the screen */
-    system("clear");
+    //system("clear");
     
     /* Loop until the battle is over */
     while (battle==1)
