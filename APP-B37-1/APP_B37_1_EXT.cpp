@@ -192,7 +192,7 @@ int main()
     					/* Randomize goblin monster level within range */
     					monster_level = rand()%GOBLIN_LEVEL_RANGE+GOBLIN_LEVEL_MIN;
     					/* Create new instance of goblin class and assign monster to it */
-    					monster = goblin(monster_name, monster_level);
+    					*monster = goblin(monster_name, monster_level);
     					break;
     				case 1:
 					/* Set spider monster name */
@@ -200,16 +200,16 @@ int main()
     					/* Randomize goblin monster level within range */
     					monster_level = rand()%GOBLIN_LEVEL_RANGE+GOBLIN_LEVEL_MIN;
     					/* Create new instance of goblin class and assign monster to it */
-    					monster = goblin(monster_name, monster_level);
+    					*monster = goblin(monster_name, monster_level);
     					break;
     					
     			}
     			
     			/* Enter battle function with hero and monster */
-    			battle(hero, enemy);
+    			battle(&hero, monster);
     			
     			/* Delete the monster after the battle to free up memory */
-    			delete enemy;
+    			delete monster;
     			
     			break;
     		case 2:
@@ -221,10 +221,10 @@ int main()
     			/* Set dragon boss monster level */
     			monster_level = DRAGON_LEVEL;
     			/* Create new instance of dragon class and assign boss to it */
-    			boss = dragon();
+    			*boss = dragon(monster_name, monster_level);
     			
     			/* Enter battle function with hero and boss */
-    			battle(hero, boss);
+    			battle(&hero, boss);
     			
     			/* Delete the boss after the battle to free up memory */
     			delete boss;
