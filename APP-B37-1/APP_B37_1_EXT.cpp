@@ -192,37 +192,42 @@ int main()
     					/* Randomize goblin monster level within range */
     					monster_level = rand()%GOBLIN_LEVEL_RANGE+GOBLIN_LEVEL_MIN;
     					/* Create new instance of goblin class and assign monster to it */
-    					monster = _____;
+    					monster = goblin(monster_name, monster_level);
     					break;
     				case 1:
-    					/********************************************/
-    					/* Write code for spider monster setup here */
-    					/********************************************/
+					/* Set spider monster name */
+    					strcpy(monster_name,"Goblin");
+    					/* Randomize goblin monster level within range */
+    					monster_level = rand()%GOBLIN_LEVEL_RANGE+GOBLIN_LEVEL_MIN;
+    					/* Create new instance of goblin class and assign monster to it */
+    					monster = goblin(monster_name, monster_level);
+    					break;
+    					
     			}
     			
     			/* Enter battle function with hero and monster */
-    			battle(_____, _____);
+    			battle(hero, enemy);
     			
     			/* Delete the monster after the battle to free up memory */
-    			_____
+    			delete enemy;
     			
     			break;
     		case 2:
     			/* Create pointer to an enemy called boss */
-    			_____
+    			enemy *boss;
     		
     			/* Set dragon boss monster name */
     			strcpy(monster_name,"Dragon");
     			/* Set dragon boss monster level */
     			monster_level = DRAGON_LEVEL;
     			/* Create new instance of dragon class and assign boss to it */
-    			_____
+    			boss = dragon();
     			
     			/* Enter battle function with hero and boss */
-    			battle(_____, _____);
+    			battle(hero, boss);
     			
     			/* Delete the boss after the battle to free up memory */
-    			_____
+    			delete boss;
     			
     			break;
     		case 3:
@@ -280,24 +285,29 @@ void battle(player *hero, enemy *monster)
     	{
     		case 1:
     			/* Retrieve punch damage */
-    			damage = _____;
+    			damage = hero->punch();
     			/* Decrease monster health by damage */
-    			monster->health = _____;
+    			monster->health = monster->health - damage;
     			/* Display weapon message text and damage dealt */
-    			cout << "\n\n" << _____;
+    			cout << "\n\n" << hero->weapon_message;
     			cout << "\nYou deal " << damage << " damage!";
     			break;
     		
     		case 2:
-    			/************************************/
-    			/* Write code for sword attack here */
-    			/************************************/
+    			/* Retrieve sword damage */
+    			damage = hero->sword();
+    			/* Decrease monster health by damage */
+    			monster->health = monster->health - damage;
+    			/* Display weapon message text and damage dealt */
+    			cout << "\n\n" << hero->weapon_message;
+    			cout << "\nYou deal " << damage << " damage!";
+    			break;
     		
     		case 3:
     			/* Retrieve health amount recovered */
-    			recovery = _____;
+    			recovery = hero->heal();
     			/* Increase hero health by amount recovered */
-    			hero->health = _____;
+    			hero->health = hero->health + recovery;
     			/* Display recovery message */
     			cout << "\n\nYou heal for " << recovery << " health!";
     			break;
@@ -317,12 +327,12 @@ void battle(player *hero, enemy *monster)
     	else
     	{
     		/* Retrieve monster attack damage */
-    		damage = _____;
+    		damage = monster->attack();
     		/* Decrease hero health by damage */
-    		hero->health = _____;
+    		hero->health = hero->health - damage;
     		
     		/* Display wound message text and damage taken */
-    		cout << "\n\n" << _____;
+    		cout << "\n\n" << monster->wound_message;
     		cout << "\nYou take " << damage << " damage.";
 			
 			/* Check if hero has been defeated */
